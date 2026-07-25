@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    <div class="w-full mx-auto">register form
+
+        
+        <form action="", method="post">
+            {% csrf_token %}
+            {{form}}
+            <input type="submit" class="bg-green-500 py-3 px-2">
+        </form>
+    </div>
+{% endblock %}
