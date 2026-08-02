@@ -1,10 +1,9 @@
- <header class="sticky top-0 bg-white border-b">
-        <div class="max-w-5xl mx-auto flex items-center gap-4 p-3">
-            <a href="{% url 'reddit:home' %}">
-                <div class="text-orange-500 font-bold text-xl">NabReddit</div>
-            </a>
-            <input class="flex-1 rounded-full bg-slate-100 px-4 py-2 outline-none" placeholder="Search" />
-            <button class="bg-orange-500 text-white px-4 py-2 rounded-full">+</button>
-            <div class="w-9 h-9 rounded-full bg-slate-300"></div>
-        </div>
-    </header>
+<nav class="navbar bg-white shadow-sm mb-4">
+  <div class="container"><a class="navbar-brand fw-bold text-danger">Reddit</a></div>
+  {% if request.user.is_authenticated %}
+  <div class="container"><a href="{% url 'account:logout' %}" class="navbar-brand ">logout</a></div>
+  {% else %}
+  <div class="container"><a href="{% url 'account:login' %}" class="navbar-brand ">Login</a></div>
+  <div class="container"><a href="{% url 'account:register' %}" class="navbar-brand ">register</a></div>
+  {% endif %}
+</nav>
