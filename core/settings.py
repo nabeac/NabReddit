@@ -119,3 +119,8 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 LOGIN_URL = '/user/login'
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'account.authenticate.EmailBackend'
+]
