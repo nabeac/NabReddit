@@ -67,4 +67,12 @@ class UserLogoutView(LoginRequiredMixin, View):
         logout(request)
         messages.success(request, 'your logout is successfully', 'success')
         return redirect('reddit:home')
+
+
+
+class UserProfileView(LoginRequiredMixin, View):
+    def get(self, request):
+        user_id = request.user.id 
+        user = User.objects.get(pk=user_id)
+        return render(request, 'account/profile.html', {'object': user})
     
