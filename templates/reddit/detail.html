@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    <a href="{% url 'reddit:delete' post.id %}" class="btn btn-danger">delete</a>
+    <div class="bg-secondary p-2">
+        <h3 class="text-light">{{ post }}</h3>
+        <span class="text-light">author: <a href="{% url 'reddit:profile' post.author %}">{{post.author}}</a>  <p class="text-body"> crated: {{ post.created }} and updated:{{ post.updated }}</p> </span>
+
+        <div class="p-2 bg-dark text-light">{{ post.body }}</div>
+    </div>
+
+{% endblock %}

@@ -34,6 +34,7 @@ class UserRegisterView(View):
 
 
 class UserLoginView(View):
+    #This function is for user verification so that a user who has logged in cannot log in again; 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             return redirect('reddit:home')

@@ -1,0 +1,21 @@
+
+<div class="row g-4"> 
+    {% for post in posts %}
+    <div class="col-12">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body">
+                <div class="d-flex align-items-center mb-3"> <img src="https://avatars.githubusercontent.com/u/141910169?s=400&u=5990b5da24d904344d2f7625289bc38c48fb80f7&v=4"
+                        class="rounded-circle me-2" width="45" height="45" alt="User">
+                    <div> <strong>{{ post.author.username }}</strong>
+                        <div class="text-muted small"> 2 hours ago </div>
+                    </div>
+                </div>
+                <a href="{% url 'reddit:detail' post.author  post.pk%}" class="mb-3"> {{ post.title }}</a>
+                <div class="d-flex gap-3"> <button class="btn btn-sm btn-outline-danger"> ❤️ Like </button> <button
+                        class="btn btn-sm btn-outline-secondary"> 💬 Comment </button> <button
+                        class="btn btn-sm btn-outline-primary"> Share </button> </div>
+            </div>
+        </div>
+    </div> <!-- Post -->
+</div>
+    {%endfor%}

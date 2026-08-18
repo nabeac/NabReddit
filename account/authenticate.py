@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 
+#this ficher was created for logingin with User.email;
 class EmailBackend:
     def authenticate(self, request, username=None, password=None):
         try:
