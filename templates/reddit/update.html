@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+    <div class="bg-secondary p-2">
+        <div class="p-2 bg-dark text-light">
+            <form method="post">
+                {{form}}
+                {% csrf_token %}
+                
+                <input type="submit">
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

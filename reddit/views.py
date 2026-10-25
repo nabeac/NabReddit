@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
+from .forms import UpdateForm
 from . models import Post
 
 
@@ -39,3 +40,26 @@ class DeleteView(LoginRequiredMixin, View):
             return redirect('reddit:home')
         messages.success(request,'مگه مال توعه آخه' ,'worning')
         return redirect('reddit:home')
+
+
+class UpdateView(LoginRequiredMixin, View):
+
+
+    form_class = UpdateForm
+
+
+    def dispatch(self, request, *args, **kwargs):
+        post = Post.objects.get(id=kwargs['post_id'])
+        if post.author.id != request.user.id:
+            messages.error(request,'مگه مال توعه آخه' ,'worning')
+            return redirect("reddit:home")
+        return super().dispatch(request, *args, **kwargs)
+    
+    def get(self, request, post_id):
+        post = Post.objects.get(id=post_id)
+        form = self.form_class(instance=post)
+        return render(request, "reddit/update.html", {'form': form})    
+    
+    def post(self, request, post_id):
+        pass
+
